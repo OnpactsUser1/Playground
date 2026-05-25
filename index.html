@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 26.2.3.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-size: 10pt; font-family: "Liberation Mono", monospace; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+  &lt;title&gt;OnPacts Indoor Activity Tracker&lt;/title&gt;
+  &lt;style&gt;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone {
+      width: 390px;
+      min-height: 100vh;
+      background: #111827;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    }
+
+    .header {
+      padding: 24px 20px;
+      background: linear-gradient(180deg, #1f2937, #111827);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 13px;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+
+    .content {
+      padding: 18px;
+    }
+
+    .card {
+      background: #1f2937;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .card h2 {
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: 0.2s;
+    }
+
+    .primary {
+      background: white;
+      color: black;
+    }
+
+    .danger {
+      background: #ef4444;
+      color: white;
+    }
+
+    .secondary {
+      background: #374151;
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      background: #111827;
+      border-radius: 18px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .metric .label {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .metric .value {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .status {
+      padding: 14px;
+      border-radius: 16px;
+      background: #0f172a;
+      border: 1px solid rgba(255,255,255,0.05);
+      font-size: 13px;
+      line-height: 1.6;
+      color: #d1d5db;
+    }
+
+    .status strong {
+      color: white;
+    }
+
+    .progress {
+      width: 100%;
+      height: 14px;
+      background: #111827;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #4ade80);
+      transition: width 0.2s;
+    }
+
+    .sensor-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sensor-item {
+      background: #111827;
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #ef4444;
+    }
+
+    .dot.active {
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .info {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #9ca3af;
+      margin-top: 8px;
+    }
+
+    .live {
+      font-size: 12px;
+      color: #d1d5db;
+      line-height: 1.7;
+      margin-top: 14px;
+      background: #111827;
+      padding: 14px;
+      border-radius: 14px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;phone&quot;&gt;
+
+  &lt;div class=&quot;header&quot;&gt;
+    &lt;h1&gt;Indoor Activity Tracking&lt;/h1&gt;
+    &lt;p&gt;
+      Experimental OnPacts indoor movement validation using phone sensors, motion detection, activity continuity and timer-based verification.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;content&quot;&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+      &lt;h2&gt;Tracking Controls&lt;/h2&gt;
+
+      &lt;button class=&quot;btn primary&quot; onclick=&quot;requestPermissions()&quot;&gt;
+        Grant Motion Permissions
+      &lt;/button&gt;
+
+      &lt;button class=&quot;btn secondary&quot; onclick=&quot;startTracking()&quot;&gt;
+        Start Indoor Activity
+      &lt;/button&gt;
+
+      &lt;button class=&quot;btn danger&quot; onclick=&quot;stopTracking()&quot;&gt;
+        Stop Activity
+      &lt;/button&gt;
+
+      &lt;div class=&quot;info&quot;&gt;
+        Recommended usage:
+        Keep the phone inside your pocket while walking indoors, climbing stairs, using treadmill or doing movement-based workouts.
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+      &lt;h2&gt;Activity Status&lt;/h2&gt;
+
+      &lt;div class=&quot;status&quot; id=&quot;statusBox&quot;&gt;
+        &lt;strong&gt;Status:&lt;/strong&gt; Waiting to start tracking.
+      &lt;/div&gt;
+
+      &lt;div class=&quot;progress&quot;&gt;
+        &lt;div class=&quot;fill&quot; id=&quot;confidenceFill&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;info&quot;&gt;
+        Activity confidence increases when continuous natural movement is detected.
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+      &lt;h2&gt;Live Metrics&lt;/h2&gt;
+
+      &lt;div class=&quot;grid&quot;&gt;
+
+        &lt;div class=&quot;metric&quot;&gt;
+          &lt;div class=&quot;label&quot;&gt;Session Time&lt;/div&gt;
+          &lt;div class=&quot;value&quot; id=&quot;timer&quot;&gt;00:00&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;metric&quot;&gt;
+          &lt;div class=&quot;label&quot;&gt;Movement Score&lt;/div&gt;
+          &lt;div class=&quot;value&quot; id=&quot;movementScore&quot;&gt;0&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;metric&quot;&gt;
+          &lt;div class=&quot;label&quot;&gt;Motion Events&lt;/div&gt;
+          &lt;div class=&quot;value&quot; id=&quot;motionEvents&quot;&gt;0&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;metric&quot;&gt;
+          &lt;div class=&quot;label&quot;&gt;Activity Confidence&lt;/div&gt;
+          &lt;div class=&quot;value&quot; id=&quot;confidence&quot;&gt;0%&lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+      &lt;div class=&quot;live&quot; id=&quot;liveData&quot;&gt;
+        Waiting for sensor data...
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+      &lt;h2&gt;Sensor Status&lt;/h2&gt;
+
+      &lt;div class=&quot;sensor-list&quot;&gt;
+
+        &lt;div class=&quot;sensor-item&quot;&gt;
+          &lt;span&gt;Accelerometer&lt;/span&gt;
+          &lt;div class=&quot;dot&quot; id=&quot;accelerometerDot&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;sensor-item&quot;&gt;
+          &lt;span&gt;Gyroscope / Orientation&lt;/span&gt;
+          &lt;div class=&quot;dot&quot; id=&quot;gyroDot&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;sensor-item&quot;&gt;
+          &lt;span&gt;Motion Tracking&lt;/span&gt;
+          &lt;div class=&quot;dot&quot; id=&quot;motionDot&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;sensor-item&quot;&gt;
+          &lt;span&gt;Activity Validation&lt;/span&gt;
+          &lt;div class=&quot;dot&quot; id=&quot;validationDot&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+      &lt;h2&gt;How This Prototype Works&lt;/h2&gt;
+
+      &lt;div class=&quot;info&quot;&gt;
+        • Detects continuous movement using accelerometer data.&lt;br&gt;&lt;br&gt;
+        • Measures movement intensity and motion continuity.&lt;br&gt;&lt;br&gt;
+        • Tracks activity duration and motion consistency.&lt;br&gt;&lt;br&gt;
+        • Generates an activity confidence score instead of exact calorie estimation.&lt;br&gt;&lt;br&gt;
+        • Designed for indoor walking, treadmill, stairs and movement-based workouts.
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;script&gt;
+
+let tracking = false;
+let startTime = null;
+let timerInterval = null;
+let movementScore = 0;
+let motionEvents = 0;
+let confidence = 0;
+let lastMovement = Date.now();
+
+function requestPermissions() {
+
+  if (typeof DeviceMotionEvent !== 'undefined' &amp;&amp; typeof DeviceMotionEvent.requestPermission === 'function') {
+
+    DeviceMotionEvent.requestPermission()
+      .then(permissionState =&gt; {
+        if (permissionState === 'granted') {
+          alert('Motion permission granted');
+        } else {
+          alert('Motion permission denied');
+        }
+      })
+      .catch(console.error);
+
+  } else {
+    alert('Motion permissions not required on this device/browser.');
+  }
+}
+
+function startTracking() {
+
+  tracking = true;
+  startTime = Date.now();
+  movementScore = 0;
+  motionEvents = 0;
+  confidence = 0;
+
+  document.getElementById('statusBox').innerHTML = '&lt;strong&gt;Status:&lt;/strong&gt; Indoor activity tracking active.';
+
+  document.getElementById('motionDot').classList.add('active');
+
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+function stopTracking() {
+
+  tracking = false;
+
+  clearInterval(timerInterval);
+
+  document.getElementById('statusBox').innerHTML = '&lt;strong&gt;Status:&lt;/strong&gt; Tracking stopped.';
+
+  document.getElementById('motionDot').classList.remove('active');
+
+  if (confidence &gt;= 70 &amp;&amp; motionEvents &gt; 40) {
+    document.getElementById('validationDot').classList.add('active');
+    document.getElementById('statusBox').innerHTML = '&lt;strong&gt;Status:&lt;/strong&gt; Valid indoor activity session detected.';
+  }
+}
+
+function updateTimer() {
+
+  if (!tracking) return;
+
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+  const mins = String(Math.floor(elapsed / 60)).padStart(2, '0');
+  const secs = String(elapsed % 60).padStart(2, '0');
+
+  document.getElementById('timer').innerText = `${mins}:${secs}`;
+}
+
+window.addEventListener('devicemotion', function(event) {
+
+  if (!tracking) return;
+
+  const acc = event.accelerationIncludingGravity;
+
+  if (!acc) return;
+
+  document.getElementById('accelerometerDot').classList.add('active');
+
+  const x = acc.x || 0;
+  const y = acc.y || 0;
+  const z = acc.z || 0;
+
+  const magnitude = Math.sqrt(x * x + y * y + z * z);
+
+  document.getElementById('liveData').innerHTML = `
+    X: ${x.toFixed(2)}&lt;br&gt;
+    Y: ${y.toFixed(2)}&lt;br&gt;
+    Z: ${z.toFixed(2)}&lt;br&gt;
+    Motion Magnitude: ${magnitude.toFixed(2)}
+  `;
+
+  if (magnitude &gt; 13) {
+
+    movementScore += Math.floor(magnitude);
+    motionEvents++;
+    lastMovement = Date.now();
+
+    document.getElementById('movementScore').innerText = movementScore;
+    document.getElementById('motionEvents').innerText = motionEvents;
+
+    confidence = Math.min(100, Math.floor((motionEvents / 50) * 100));
+
+    document.getElementById('confidence').innerText = confidence + '%';
+    document.getElementById('confidenceFill').style.width = confidence + '%';
+  }
+
+  if (Date.now() - lastMovement &gt; 5000) {
+    confidence = Math.max(0, confidence - 1);
+    document.getElementById('confidence').innerText = confidence + '%';
+    document.getElementById('confidenceFill').style.width = confidence + '%';
+  }
+
+});
+
+window.addEventListener('deviceorientation', function(event) {
+
+  if (!tracking) return;
+
+  document.getElementById('gyroDot').classList.add('active');
+
+});
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
